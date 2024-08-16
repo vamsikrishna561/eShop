@@ -1,0 +1,17 @@
+<!-- <h3>@context.User.Identity?.Name</h3> -->
+<div class="dropdown-menu" *ngIf="isAuthorized">
+  <span class="dropdown-button"
+    ><img role="presentation" ngSrc="assets/icons/user.svg" fill
+  /></span>
+  <div class="dropdown-content">
+    <a class="dropdown-item">My orders</a>
+    <form class="dropdown-item">
+      <button type="submit">Log out</button>
+    </form>
+  </div>
+</div>
+<div *ngIf="!isAuthorized">
+  <a aria-label="Sign in" href=""
+    ><img role="presentation" ngSrc="assets/icons/user.svg" fill
+  /></a>
+</div>

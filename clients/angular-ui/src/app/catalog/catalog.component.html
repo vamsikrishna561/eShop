@@ -1,0 +1,33 @@
+<div class="catalog">
+  <app-catalog-search (brand)="setBrand($event)" (type)="setType($event)"></app-catalog-search>
+  <p *ngIf="!catalogResult">Loading...</p>
+  <div *ngIf="catalogResult && catalogResult.data && catalogResult.count > 0">
+    <div class="catalog-items">
+      <div class="catalog-item" *ngFor="let item of catalogResult?.data">
+        <a class="catalog-product">
+          <span class="catalog-product-image">
+            <img
+              [alt]="item.name"
+              [ngSrc]="GetImagePath(item.pictureFileName)"
+              width="377"
+              height="377"
+            />
+          </span>
+          <span class="catalog-product-content">
+            <span class="name">{{ item.name }}</span>
+            <span class="price">{{ item.price }}</span>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <div class="page-links">
+      <a
+        *ngFor="let page of pageIndexs"
+        [ngClass]="{ 'active-page': page === currentPage }"
+        (click)="GetItemsForCurrentPage(page)"
+        >{{ page }}</a
+      >
+    </div>
+  </div>
+</div>

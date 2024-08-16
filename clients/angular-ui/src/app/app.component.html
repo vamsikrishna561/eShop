@@ -1,0 +1,48 @@
+<div class="eshop-header home">
+  <div class="eshop-header-hero">
+    <img
+      role="presentation"
+      [ngSrc]="
+        IsCatalog
+          ? 'assets/images/header-home.webp'
+          : 'assets/images/header.webp'
+      "
+      fill
+    />
+  </div>
+  <div class="eshop-header-container">
+    <nav class="eshop-header-navbar">
+      <a class="logo logo-header" href="">
+        <img
+          alt="AdventureWorks"
+          [ngSrc]="'assets/images/logo-header.svg'"
+          class="logo logo-header"
+          fill
+        />
+      </a>
+      <app-login></app-login>
+      <app-cart-menu></app-cart-menu>
+    </nav>
+    <div class="eshop-header-intro">
+      <div class="eshop-header-intro">
+        <h1>Ready for a new adventure?</h1>
+        <p>Start the season with the latest in clothing and equipment.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<app-catalog></app-catalog>
+<footer class="eshop-footer">
+  <div class="eshop-footer-content">
+    <div class="eshop-footer-row">
+      <img
+        style="width: 100px"
+        role="presentation"
+        ngSrc="assets/images/logo-footer.svg"
+        class="logo logo-footer"
+        fill
+      />
+      <p>© AdventureWorks</p>
+    </div>
+  </div>
+</footer>

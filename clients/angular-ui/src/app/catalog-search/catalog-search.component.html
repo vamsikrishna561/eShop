@@ -1,0 +1,54 @@
+<ng-container *ngIf="catalogBrands && catalogItemTypes">
+  <div class="catalog-search">
+    <div class="catalog-search-header">
+      <img
+        style="width: auto"
+        role="presentation"
+        ngSrc="assets/icons/filters.svg"
+        fill
+      />
+      Filters
+    </div>
+    <div class="catalog-search-types">
+      <div class="catalog-search-group">
+        <h3>Brand</h3>
+        <div class="catalog-search-group-tags">
+          <a (click)="setBrand(0)" [ngClass]="{ 'catalog-search-tag': true, active: brandId == 0 }">
+            All
+          </a>
+          <ng-container *ngFor="let brand of catalogBrands">
+            <a (click)="setBrand(brand.id)"
+              [ngClass]="{
+                'catalog-search-tag': true,
+                active: brandId == brand.id
+              }"
+            >
+              {{ brand.brand }}
+            </a>
+          </ng-container>
+        </div>
+      </div>
+      <div class="catalog-search-group">
+        <h3>Type</h3>
+
+        <div class="catalog-search-group-tags">
+          <a (click)="setType(0)"
+            [ngClass]="{ 'catalog-search-tag': true, active: itemTypeId == 0 }"
+          >
+            All
+          </a>
+          <ng-container *ngFor="let itemType of catalogItemTypes">
+            <a (click)="setType(itemType.id)"
+              [ngClass]="{
+                'catalog-search-tag': true,
+                active: itemTypeId == itemType.id
+              }"
+            >
+              {{ itemType.type }}
+            </a>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

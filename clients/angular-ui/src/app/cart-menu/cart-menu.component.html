@@ -1,0 +1,7 @@
+<a aria-label="cart">
+    <img role="presentation" ngSrc="assets/icons/cart.svg" fill/>
+    @if (basketItems?.Count > 0)
+    {
+        <span class="cart-badge">{{TotalQuantity}}</span>
+    }
+</a>
