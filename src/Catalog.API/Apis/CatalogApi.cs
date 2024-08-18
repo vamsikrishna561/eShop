@@ -10,7 +10,7 @@ public static class CatalogApi
         var api = app.MapGroup("api/catalog").HasApiVersion(1.0);
 
         // Routes for querying catalog items.
-        api.MapGet("/items", GetAllItems);
+        api.MapGet("/items", GetAllItems).RequireAuthorization();
         api.MapGet("/items/by", GetItemsByIds);
         api.MapGet("/items/{id:int}", GetItemById);
         api.MapGet("/items/by/{name:minlength(1)}", GetItemsByName);

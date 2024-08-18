@@ -3,7 +3,16 @@
 builder.AddServiceDefaults();
 
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "test",
+                      policy =>
+                      {
+                          policy.AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+                      });
+});
 builder.AddNpgsqlDbContext<ApplicationDbContext>("identitydb");
 
 // Apply database migration automatically. Note that this approach is not
@@ -41,7 +50,7 @@ builder.Services.AddTransient<ILoginService<ApplicationUser>, EFLoginService>();
 builder.Services.AddTransient<IRedirectService, RedirectService>();
 
 var app = builder.Build();
-
+app.UseCors("test");
 app.MapDefaultEndpoints();
 
 app.UseStaticFiles();

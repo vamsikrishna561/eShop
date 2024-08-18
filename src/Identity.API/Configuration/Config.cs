@@ -9,6 +9,7 @@
             {
                 new ApiResource("orders", "Orders Service"),
                 new ApiResource("basket", "Basket Service"),
+                new ApiResource("catalog", "Catalog Service"),
                 new ApiResource("webhooks", "Webhooks registration Service"),
             };
         }
@@ -21,6 +22,7 @@
             {
                 new ApiScope("orders", "Orders Service"),
                 new ApiScope("basket", "Basket Service"),
+                new ApiScope("catalog", "Catalog Service"),
                 new ApiScope("webhooks", "Webhooks registration Service"),
             };
         }
@@ -185,7 +187,36 @@
                     {
                         "webhooks"
                     }
-                }
+                },
+                new Client
+{
+    ClientId = "angular-ui",
+
+    AllowedGrantTypes = GrantTypes.Code,
+    Enabled = true,
+    EnableLocalLogin = true,
+    RequirePkce = true,
+    AllowOfflineAccess = true,
+                     AllowAccessTokensViaBrowser = true,
+                    AlwaysIncludeUserClaimsInIdToken = true,
+                    AccessTokenLifetime = 60*60*2, // 2 hours
+                    IdentityTokenLifetime= 60*60*2, // 2 hours
+    ClientSecrets = [],
+    RequireClientSecret = false,
+
+    RedirectUris =           { "http://localhost:4200/index.html", "http://localhost:4200/silent-refresh.html" },
+    PostLogoutRedirectUris = { "http://localhost:4200/index.html","http://localhost:4200/silent-refresh.html" },
+
+    AllowedScopes =
+    {
+            IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.OfflineAccess,
+                        IdentityServerConstants.StandardScopes.Email,
+                          "catalog",
+                        "basket",
+    },
+}
             };
         }
     }
